@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'booktest/jquery-1.12.4.min.js'%}"></script>
+    <script>
+        $(function (){
+            $.get('/booktest/region_select/10000000', function (data){
+                province = $('#pro');
+                $.each(data.data, function (index, item) {
+                    {#province.#}
+                    province.append('<option value="'+item[0]+'">'+item[1]+'</option>')
+                })
+            })
+
+            $('#pro').bind('change',function (){
+                $('#city').html('<option value="">please select city</option>')
+                $('#dis').html('<option value="">please select distinct</option>')
+                v= $('#pro').val()
+                $.get('/booktest/region_select/'+ v, function (data){
+                    city = $('#city');
+                    {#alert(data)#}
+                    $.each(data.data, function (index, item) {
+                        city.append('<option value="'+item[0]+'">'+item[1]+'</option>')
+                    })
+                })
+            })
+            $('#city').bind('change',function (){
+                $('#dis').html('<option value="">please select distinct</option>')
+                v= $('#city').val()
+                $.get('/booktest/region_select/'+ v, function (data){
+                    dis = $('#dis');
+                    {#alert(data)#}
+                    $.each(data.data, function (index, item) {
+                        dis.append('<option value="'+item[0]+'">'+item[1]+'</option>')
+                    })
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<select name="" id="pro" onchange="selectpri()">
+    <option value="">please select province</option>
+</select>
+<select name="" id="city">
+    <option value="">please select city</option>
+</select>
+<select name="" id="dis">
+    <option value="">please select distinct</option>
+</select>
+</body>
+</html>

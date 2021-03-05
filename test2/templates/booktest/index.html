@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<img src="/booktest/verifyCode/">
+{% csrf_token %}{# network protect #}
+index
+<br>
+{{book.btitle}}<br>
+{{book.bpub_date}}<br>
+<ul>
+{% for book in list %}
+    {% if forloop.counter|divisibleby:"2" == 1 %}
+
+    {% else %}
+    {% endif %}
+    <li>{{ forloop.counter }}:{{ book.btitle }}</li>
+{% empty %}
+    <li>nothing found</li>
+{% endfor %}
+    </ul>
+{{ t2|default:'<h1>abc<h1>' }}
+<br>
+{{ t2|default:'&lt;h1&gt;abc&lt;/h1&gt;' }}
+<hr>
+{#<a href="{% url 'booktest:indexes' %}">kkkkkk</a>#}
+{% block content %}
+{% endblock %}
+{#  singleline#}
+
+{% comment %}
+    multiline commet
+{% endcomment %}
+
+</body>
+</html>

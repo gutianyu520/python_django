@@ -1,0 +1,30 @@
+{% load static %}
+{% load cache %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script>
+        tinyMCE.init({
+            'mode':'textareas',
+            'theme':'silver',
+            'width':600,
+            'height':400
+        })
+    </script>
+</head>
+<body>
+{#<img src="/static/booktest/1.jpeg" alt="" width="50%">#}
+{#<img src="{% static 'booktest/1.jpeg' %}" alt="" width="50%">#}
+<form action="">
+    <textarea name="content" id="" cols="30" rows="10"></textarea>
+</form>
+{% cache 500 hello %}
+    hello1
+{% endcache %}
+</body>
+</html>

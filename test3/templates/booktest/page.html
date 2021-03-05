@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page</title>
+</head>
+<body>
+{% for user in page %}
+    {{ user.uname }}<br>
+{% endfor %}
+<hr>
+{% for index in page.paginator.page_range %}
+    {% if page.number == index %}
+        {{ index }}
+    {% else %}
+        <a href="/booktest/pageList/{{ index }}">{{ index }}</a>
+    {% endif %}
+
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'booktest/indexes.html' %}
+{% block content %}
+<h1>nihao</h1>
+   fangan1: {{ t1|safe }}
+    <br>
+    fangan2:
+    <br>
+    {% autoescape off %}
+        {{ t1 }}
+    {% endautoescape %}
+
+{% endblock content %}
+{# mo ban #}
+
+{# escape start 转义#}
+{# safe  stop转义#}
